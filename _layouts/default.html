@@ -1,6 +1,6 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+
 <link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,200,100,300italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Allerta' rel='stylesheet' type='text/css'>
@@ -9,12 +9,21 @@ layout: default
 <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
 
-<div class="home">
-  
-  <ul class="post-list">
-    {% for post in paginator.posts %}
-      {% include description.html %}
-    {% endfor %}
-  </ul>
-  
-</div>
+
+  {% include head.html %}
+
+  <body>
+
+   {% include header.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

@@ -1,0 +1,27 @@
+<!-- <div class="pagination">
+
+  {% if page.previous %}
+    <a class="pagination-link" href="{{ page.previous.url }}">Previous |</a>
+  {% endif %}
+
+  <a class="pagination-link" href="{{ / }}">Home</a>
+
+  {% if page.next %}
+    <a class="pagination-link" href="{{ page.next.url }}">| Next</a>
+  {% endif %}
+
+</div> -->
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a class="pagination-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"> Previous |</a>
+  {% endif %}
+
+  <a class="pagination-link" href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}"> Home</a>
+
+  {% if paginator.next_page %}
+    <a class="pagination-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">| Next</a>
+  {% endif %}
+</div>
+{% endif %}
