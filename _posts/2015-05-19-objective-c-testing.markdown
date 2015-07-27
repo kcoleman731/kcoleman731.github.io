@@ -15,7 +15,22 @@ One of the things I would like to do on this blog is write technical posts from 
 
 Given that I build this blog using Jekyll, I felt it only natural that I write the first technical post about the framework.
 
-{% highlight ruby %}
+{% highlight objc %}
+- (void)testToVerifyUserLogin
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Standard User Login Expectation"];
+    NSMutableDictionary *credentials = [NSMutableDictionary new];
+    [credentials setValue:@"test@gmail.com" forKey:SFAPIEmailKey];
+    [credentials setValue:@"test_password" forKey:SFAPIPasswordKey];
+    [credentials setValue:@"test_password" forKey:SFAPIConfirmationKey];
+
+    [self.APImanager authenticateUserWithCredentials:credentials completion:^(NSString *accessToken, NSError *error){
+        if (accessToken) {
+            [expectation fulfill];
+        }
+    }];
+    [self waitForCompletionWithTimeOut:5];
+}
 {% endhighlight %}
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
